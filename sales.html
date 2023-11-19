@@ -4,6 +4,8 @@
     </head>
     <body>
         <h1 style="text-align: center;">sales detail</h1>
+        <div>
+            <form method="post" name="google-sheet">
         <table>
             <tr>
                 <td>
@@ -82,5 +84,18 @@
                 </td>
             </tr>
         </table>
+        </form>
+        </div>
+        <script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbwsgopQkJ7hTXdXx_262XOfmVddePEjl56Nljhd9SgFXqgIYejok5iPLQuHRm9KVo0_/exec'
+            const form = document.forms['google-sheet']
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'post', body: new FormData(form)})
+                .then(response => alert("Your work has been submited"))
+                .catch(error => console.error('Error!', error.message))
+            })
+           </script>
     </body>
 </html>
